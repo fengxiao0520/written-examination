@@ -1,6 +1,7 @@
 package com.test.list;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ScreenListData {
@@ -13,18 +14,17 @@ public class ScreenListData {
         list.add(1);
         list.add(1);
         System.out.println(screen(list).toString());
+
+        //用集合框架实现
+        HashSet<Integer> set = new HashSet<>(list);
+        System.out.println(set.toString());
     }
 
     public static List<Integer> screen(List<Integer> list) {
         List<Integer> temp = new ArrayList<>();
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (temp.size() <= 0) {
-                temp.add(list.get(i));
-            }
-            for (int j = 1; j < list.size(); j++) {
-                if (!temp.contains(list.get(j))) {
-                    temp.add(list.get(j));
-                }
+        for (Integer i : list) {
+            if (!temp.contains(i)) {
+                temp.add(i);
             }
         }
         return temp;
